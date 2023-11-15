@@ -1,0 +1,21 @@
+#!/usr/bin/env python3
+
+import os, sys
+
+args = sys.argv
+content = ""
+file = __file__.split('/')
+file = file[-1]
+
+try:
+	name = args[1]
+	email = args[2]
+	content = f"[user]\n\temail = {email}\n\tname = {name}\n"
+except IndexError:
+	print(f"The Format is: {file} <name> <email>")
+
+config_git = os.path.join("/home", "genie", ".gitconfig")
+
+with open(config_git, 'w') as file:
+	file.write(content)
+	print(content)
