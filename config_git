@@ -6,6 +6,7 @@ args = sys.argv
 content = ""
 file = __file__.split('/')
 file = file[-1]
+get_user = os.listdir('/home')[0]
 
 try:
 	name = args[1]
@@ -14,7 +15,7 @@ try:
 except IndexError:
 	print(f"The Format is: {file} <name> <email>")
 
-config_git = os.path.join("/home", "genie", ".gitconfig")
+config_git = os.path.join("/home", get_user, ".gitconfig")
 
 with open(config_git, 'w') as file:
 	file.write(content)
